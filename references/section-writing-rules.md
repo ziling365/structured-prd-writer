@@ -84,12 +84,11 @@ Use it for:
 - C端/B端 multi-step journey
 - multiple order, coupon, or settlement states
 
-When a flow is needed, write Mermaid flowchart code blocks only.
-- Use fenced `mermaid` code blocks.
-- Use `flowchart TD` by default.
-- Include actor, system, action, result, decision, final state, and failure handling as nodes or edge labels.
-- Use decision diamonds with `{}` for condition checks.
-- Do not write prose paragraphs or numbered step lists in this section.
+When a flow is needed, use the clearest form for the output format.
+- For Word `.docx`, prefer concise numbered steps or a simple flow table.
+- For Markdown, Mermaid flowcharts are acceptable when they improve readability.
+- Include actor, system, action, result, decision, final state, and failure handling.
+- Do not write long explanatory prose in this section.
 
 If the flow is simple, write `无`.
 

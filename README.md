@@ -17,12 +17,13 @@ Structured PRD Writer 是一个用于撰写、整理和审查结构化产品需�
 - 补齐固定目录，包括版本记录、需求概览、功能方案、限制说明、不支持功能、详细设计等。
 - 明确区分“业务限制说明”和“不支持功能说明”。
 - 对缺失信息使用 `无` 或 `未提供`，避免把空内容悄悄删掉。
-- 帮你把“系统/操作流程”输出成 Mermaid 流程图代码，而不是大段文字。
+- 默认生成 Word `.docx` 版 PRD；如明确要求，也可以输出 Markdown `.md`。
+- 帮你把“产品功能详细设计”写成与“功能详情”顺序一致、面向研发的展开版。
 - 帮你检查文档是否存在空模块丢失、版本记录过泛、业务范围不清、流程缺失等问题。
 
 ### 它可以输出什么
 
-默认输出 Markdown 格式 PRD，结构类似：
+默认输出 Word `.docx` 格式 PRD；如明确要求 `md` 或 `Markdown`，也可以输出 Markdown 格式。结构类似：
 
 ```text
 # 【PRD】{产品线/平台}-{模块}-{业务场景/能力名称}
@@ -36,22 +37,13 @@ Structured PRD Writer 是一个用于撰写、整理和审查结构化产品需�
 ---文档以下无内容---
 ```
 
-其中 `系统/操作流程` 会输出 Mermaid 流程图代码，例如：
-
-```mermaid
-flowchart TD
-  A["用户发起操作"] --> B{"系统校验条件"}
-  B -- "通过" --> C["执行成功流程"]
-  B -- "失败" --> D["展示失败提示"]
-```
-
-你可以在支持 Mermaid 的 Markdown 预览里直接查看流程图。
-
 你也可以直接查看完整样例和可复制模板：
 
 [examples/sample-prd.md](examples/sample-prd.md)
 
 [templates/structured-prd-template.md](templates/structured-prd-template.md)
+
+[templates/structured-prd-template.docx](templates/structured-prd-template.docx)
 
 ### 适合的使用场景
 
@@ -93,7 +85,8 @@ flowchart TD
 - 保留空模块，不因为没有内容就删除标题。
 - 版本记录必须写清楚具体改了什么。
 - 功能概述用业务语言，功能详细设计用研发可执行的机制语言。
-- 系统/操作流程只用 Mermaid 流程图表达。
+- 产品功能实现方案面向产品运营，只写场景和功能简述。
+- 产品功能详细设计面向研发，必须与功能详情对应且顺序一致。
 
 ## English
 
@@ -110,12 +103,12 @@ The goal is not to create a document that merely looks complete. The goal is to 
 - Preserve required sections such as version history, requirement overview, functional solution, limitations, unsupported items, and detailed design.
 - Clearly separate business limitations from unsupported capabilities.
 - Use `无` or `未提供` for missing content, instead of silently deleting empty sections.
-- Output system/process flows as Mermaid flowchart code instead of long prose.
+- Generate Word `.docx` PRDs by default, with Markdown available when explicitly requested.
 - Review existing PRDs for missing sections, vague revisions, unclear scope, missing flows, or incomplete empty-state handling.
 
 ### What It Can Output
 
-By default, the skill outputs Markdown PRDs with a structure like:
+By default, the skill outputs Word `.docx` PRDs. Markdown `.md` output is available only when explicitly requested. The structure looks like:
 
 ```text
 # 【PRD】{Product Line / Platform}-{Module}-{Business Scenario / Capability}
@@ -129,22 +122,13 @@ By default, the skill outputs Markdown PRDs with a structure like:
 ---文档以下无内容---
 ```
 
-For system/process flows, it outputs Mermaid code blocks:
-
-```mermaid
-flowchart TD
-  A["User starts an action"] --> B{"System validates condition"}
-  B -- "Pass" --> C["Run success flow"]
-  B -- "Fail" --> D["Show failure message"]
-```
-
-You can preview these diagrams directly in Markdown tools that support Mermaid.
-
 You can also view a complete sample output and a reusable template:
 
 [examples/sample-prd.md](examples/sample-prd.md)
 
 [templates/structured-prd-template.md](templates/structured-prd-template.md)
+
+[templates/structured-prd-template.docx](templates/structured-prd-template.docx)
 
 ### Good Use Cases
 
@@ -186,4 +170,5 @@ Use $structured-prd-writer to convert this requirement document into a standard 
 - Keep empty sections visible instead of deleting them.
 - Version history must describe concrete changes.
 - Use business language in overview sections and implementation-ready mechanism language in detailed design sections.
-- Use Mermaid flowcharts only for system/process flows.
+- Keep the functional implementation plan product-operations oriented.
+- Keep detailed product design aligned with the order of functional details and written for R&D execution.

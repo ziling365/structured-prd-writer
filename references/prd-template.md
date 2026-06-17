@@ -1,7 +1,7 @@
-# Structured PRD Full Template
+# WOS PRD Full Template
 
 Use this template when drafting a full PRD. Keep all modules even when content is empty.
-Generated PRD deliverables should be Markdown files with a `.md` suffix unless the user explicitly requests another format.
+Generated PRD deliverables should be Word `.docx` files by default. Generate Markdown `.md` only when the user explicitly requests Markdown, md, or text-only output.
 
 Formatting rules:
 - 一级目录不编号。
@@ -27,15 +27,15 @@ Format:
 ```
 
 Acceptable variants:
-- `【PRD】内容运营-活动报名-适配线下活动`
-- `【PRD】财务结算-接口对接-适配新结算服务`
-- `【PRD】交易平台-担保支付-支持先囤后用`
-- `【PRD】品牌项目-SOW一阶段-核心功能交付`
+- `【PRD】WOS内容-微预约-报名-适配线下活动`
+- `【PRD】WOS财务-灵才个税代征对接新接口`
+- `【WOS平台】小红书小程序新增本地生活担保支付及先囤后用`
+- `【PRD】全棉时代SOW一阶段`
 
 Title rules:
 - Include module and business scenario.
 - Do not use only the project nickname.
-- Keep English abbreviations such as PRD, SOW, CRM, API uppercase.
+- Keep English abbreviations such as WOS, PRD, SOW, CRM, API uppercase.
 - If the source title has a specific brand, channel, or project phase, preserve it.
 
 ## 2. 版本状态及修订记录
@@ -99,7 +99,6 @@ Describe where the requirement happens:
 - business action: 下单、支付、退款、核销、领券、报名、配置、同步
 - boundary: specific goods, nodes, regions, payment modes, store types
 
-If the source says `见BRD`, use `见BRD`.
 If no scene is provided, use `未提供`.
 
 ## 6. 商业策略
@@ -127,7 +126,7 @@ Capture:
 - report/export/data-analysis requirements
 - data update frequency if provided
 
-If the source says `见BRD`, keep it.
+If no operational data is provided, use `未提供`.
 
 ## 8. 销售计划
 
@@ -149,7 +148,7 @@ Capture:
 - exact capabilities per delivery phase
 
 Write dates precisely.
-If source says `见SOW文档` or `见BRD`, preserve it.
+If source does not provide delivery timing or content, use `未提供`.
 
 ## 产品功能实现方案
 
@@ -211,7 +210,7 @@ Common categories:
 - supported organization node types
 - regional or city dependency
 - configuration prerequisites
-- external application/manual steps outside the core system
+- external application/manual steps outside WOS
 
 ### 10.4 不支持功能说明
 
@@ -230,22 +229,11 @@ If none, write `无`.
 
 ### 10.5 系统/操作流程
 
-Use for complex flows. This section must contain Mermaid flowchart code blocks only.
+Use for complex flows only. If no system/process flow is needed, write `无`.
 
-Include actor, system, state/action, next result, and failure handling in the diagram nodes and edges.
-Do not add prose or numbered steps before or after the diagram.
-If no system/process flow is needed, write `无`.
+For Word `.docx`, prefer a concise numbered flow or a simple flow table. For Markdown, Mermaid flowcharts are acceptable when they improve readability.
 
-Flow writing pattern:
-
-```mermaid
-flowchart TD
-  A["商家在{系统/页面}完成{配置}"] --> B["用户在{渠道/页面}发起{动作}"]
-  B --> C{"系统校验{条件}"}
-  C -- "通过" --> D["调用{外部/内部系统}完成{动作}"]
-  D --> E["{订单/券/账号/支付/退款}状态变更为{状态}"]
-  C -- "失败" --> F["提示{文案/处理方式}"]
-```
+Include actor, system, state/action, next result, and failure handling. Do not expand simple one-system configuration work into a forced flow.
 
 ### 6. 名称解释
 
@@ -343,7 +331,7 @@ API兼容
 历史数据处理
 导入导出功能
 操作日志功能
-数据报表调整
+商户数据报表调整
 历史参考资料
 ```
 
@@ -352,5 +340,5 @@ Common handling:
 - 历史数据处理: migration, default values, existing merchant behavior, old orders.
 - 导入导出功能: new columns, empty historical fields, export permissions.
 - 操作日志功能: whether configuration changes need logs, and where viewed.
-- 数据报表调整: financial/order/customer/reporting additions.
+- 商户数据报表调整: financial/order/customer/reporting additions.
 - 历史参考资料: links or docs used for design.

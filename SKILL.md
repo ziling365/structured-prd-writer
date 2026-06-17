@@ -1,12 +1,12 @@
 ---
 name: structured-prd-writer
-description: Use when writing, reviewing, or standardizing structured PRDs from BRD/SOW/real project requirements, especially when the user needs a strict section-by-section PRD template with mandatory empty-state handling, versioning, business scope, functional details, limitations, unsupported items, and system/process flows.
+description: Use when writing, reviewing, or standardizing structured WOS-style PRDs from BRD/SOW/real project requirements, especially when the user needs a strict section-by-section PRD template with default Word docx output, optional Markdown output, mandatory empty-state handling, versioning, business scope, functional details, limitations, unsupported items, and system/process flows.
 ---
 
 # Structured PRD Writer
 
-Use this skill to turn business requirements into a strict structured PRD, or to normalize an existing PRD against a consistent PRD standard.
-When producing a document artifact, output it as Markdown (`.md`) unless the user explicitly asks for another format.
+Use this skill to turn business requirements into a strict structured WOS-style PRD, or to normalize an existing PRD against the house standard.
+When producing a document artifact, output Word (`.docx`) by default. Output Markdown (`.md`) only when the user explicitly asks for Markdown, md, or a text-only PRD.
 
 ## Goal
 
@@ -28,10 +28,10 @@ Write PRDs that are:
    - Revision content must be specific, not generic.
    - Do not collapse multiple versions into one line if the source has multiple revisions.
 
-3. Requirements overview must be source-faithful.
-   - Paste the BRD link or planning address if provided.
-   - If the source gives copied BRD text, copy it as-is.
-   - Do not paraphrase the overview into your own words unless the source is missing.
+3. Requirements overview is a reserved container.
+   - `需求概览` itself does not carry copied BRD/SOW text in generated PRDs.
+   - Keep the fixed subsections under it.
+   - Put source-backed background, scenario, strategy, data, sales, and delivery content into those subsections.
 
 4. Empty content must stay visible.
    - Never delete a module just because there is no content.
@@ -44,7 +44,7 @@ Write PRDs that are:
    - 功能详情: align with detailed design layer by layer.
    - 业务限制说明: only state limits/exclusions inside the business scenario.
    - 不支持功能说明: only state items the closed loop does not support.
-   - 系统/操作流程: use only Mermaid flowchart code blocks for complex cross-system, multi-state, or buyer/seller flows.
+   - 系统/操作流程: use only for complex cross-system, multi-state, or buyer/seller flows; otherwise write `无`.
 
 6. Do not invent unsupported business logic.
    - If the source does not define a rule, mark it as missing rather than guessing.
@@ -178,14 +178,11 @@ Use this for:
 - account opening / verification / certification flow
 - complex state machine flow
 
-This section must contain Mermaid flowchart code only, not prose or numbered step lists.
-- If a flow exists, output one or more fenced `mermaid` code blocks.
-- Use `flowchart TD` by default.
-- Put Chinese node text in quoted labels, especially when labels contain punctuation.
-- Represent actors, systems, decisions, success states, failure states, and manual operations as explicit nodes.
-- Use decision diamonds with `{}` for conditions and route `是/否`, `成功/失败`, or status names on edges.
-- Keep explanatory details in node labels; do not add prose before or after the diagram.
-- If there is no system/process flow, write `无`.
+If there is no system/process flow, write `无`.
+If a flow exists, write it in the clearest review-friendly form for the output format:
+- For Word `.docx`, use a concise numbered flow or a simple flow table.
+- For Markdown, Mermaid flowcharts are acceptable when they improve readability.
+- Keep the flow limited to actor, system, action, decision, result, and failure handling.
 
 ### 4. Handle blank sections correctly
 
@@ -259,7 +256,7 @@ Use a PRD structure like:
 ### 2.2 历史数据处理
 ### 2.3 导入导出功能
 ### 2.4 操作日志功能
-### 2.5 数据报表调整
+### 2.5 商户数据报表调整
 
 ---文档以下无内容---
 ```
@@ -269,7 +266,13 @@ For full writing detail, load only the needed references:
 - `references/section-writing-rules.md`: use when polishing section wording or deciding `无` vs `未提供`.
 - `references/review-checklist.md`: use when reviewing an existing PRD before delivery.
 
-If the task is to generate a deliverable file, write the content in Markdown and save it with a `.md` suffix.
+If the task is to generate a deliverable file, create a Word `.docx` by default. If the user explicitly requests Markdown, write the content in Markdown and save it with a `.md` suffix.
+
+For `.docx` output:
+- Use the Documents skill/workflow when available.
+- Preserve the same PRD heading hierarchy, tables, placeholders, and final marker.
+- Render and visually inspect the DOCX when LibreOffice/`soffice` is available.
+- If rendering is unavailable because `soffice` is missing, still deliver the `.docx` and state that visual render QA could not be completed.
 
 ## Formatting Rules
 

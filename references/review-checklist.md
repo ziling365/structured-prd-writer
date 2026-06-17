@@ -6,14 +6,14 @@ Use this checklist before delivering a PRD or reviewing a draft.
 
 - [ ] Title includes PRD/platform/module/business scenario.
 - [ ] Version table includes version, date, reviser, stage, concrete revision content.
-- [ ] Requirement overview includes BRD/SOW/planning address when available.
+- [ ] 需求概览 is present as a top-level container and does not contain copied BRD/SOW overview text.
 - [ ] All required modules are present.
 - [ ] Empty modules are filled with `无` or `未提供`.
 - [ ] No section uses `暂无`.
 
 ## Source Fidelity
 
-- [ ] BRD/SOW overview text is copied rather than rephrased when source text exists.
+- [ ] Source-backed content is placed in the correct subsection under 需求概览.
 - [ ] Requirement original number and requirement name are preserved when available.
 - [ ] Product names, external systems, interface names, status names, and field names are copied accurately.
 - [ ] Dates and version numbers match the source.
@@ -44,13 +44,13 @@ Use this checklist before delivering a PRD or reviewing a draft.
 - [ ] Historical data handling is explicit.
 - [ ] Operation log behavior is explicit.
 - [ ] API compatibility is explicit for interface-related changes.
-- [ ] Reports and report data changes are explicit.
+- [ ] Reports and merchant data changes are explicit.
 
 ## Flow
 
 - [ ] 系统/操作流程 exists for cross-system or multi-state processes.
-- [ ] Flow is written as fenced Mermaid code blocks only, or `无` when not needed.
-- [ ] Mermaid nodes/edges include actor, system, action, result, and failure handling.
+- [ ] Flow is written only when the process is complex enough to need it; otherwise it is `无`.
+- [ ] Flow includes actor, system, action, result, and failure handling when provided.
 - [ ] C端/B端/商家/消费者 paths are not conflated.
 - [ ] Payment/refund/coupon/account flows include final state.
 
